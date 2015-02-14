@@ -1,0 +1,10 @@
+C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmithDAL\bin\Debug\PanelSmithDAL.dll.config
+C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmithDAL\bin\Debug\PanelSmithDAL.dll
+C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmithDAL\bin\Debug\PanelSmithDAL.pdb
+C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmithDAL\bin\Debug\EntityFramework.dll
+C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmithDAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmithDAL\bin\Debug\EntityFramework.xml
+C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmithDAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmithDAL\obj\Debug\PanelSmithDAL.dll
+C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmithDAL\obj\Debug\PanelSmithDAL.pdb
+C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmithDAL\obj\Debug\PanelSmithDAL.csprojResolveAssemblyReference.cache

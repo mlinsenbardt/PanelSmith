@@ -8,5 +8,6 @@ namespace PanelSmithDAL
 {
     public class User
     {
+
     }
 }
