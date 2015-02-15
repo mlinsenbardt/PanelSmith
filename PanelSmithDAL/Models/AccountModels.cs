@@ -27,6 +27,16 @@ namespace PanelSmithDAL.Models
         public string UserName { get; set; }
     }
 
+    public class Avatar
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [ForeignKey("UserProfile")]
+        public int AvatarId { get; set; }
+        public string filename { get; set; }
+        public string PictureDataAsString { get; set; }
+    }
+
     public class RegisterExternalLoginModel
     {
         [Required]
