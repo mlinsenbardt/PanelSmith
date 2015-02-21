@@ -25,6 +25,7 @@ namespace PanelSmithDAL.Models
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
         public string UserName { get; set; }
+        public List<Project> Projects { get; set; }
     }
 
     public class Avatar
@@ -33,8 +34,7 @@ namespace PanelSmithDAL.Models
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [ForeignKey("UserProfile")]
         public int AvatarId { get; set; }
-        public string filename { get; set; }
-        public string PictureDataAsString { get; set; }
+        public byte[] Image { get; set; }
     }
 
     public class RegisterExternalLoginModel
