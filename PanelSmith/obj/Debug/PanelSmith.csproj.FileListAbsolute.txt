@@ -88,3 +88,8 @@ C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmith\bin
 C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmith\bin\zh-Hant\System.Spatial.resources.dll
 C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmith\obj\Debug\PanelSmith.dll
 C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmith\obj\Debug\PanelSmith.pdb
+C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmith\bin\Emgu.CV.dll
+C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmith\bin\Emgu.CV.GPU.dll
+C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmith\bin\Emgu.CV.ML.dll
+C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmith\bin\Emgu.CV.UI.dll
+C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmith\bin\Emgu.Util.dll

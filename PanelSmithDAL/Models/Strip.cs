@@ -9,7 +9,7 @@ using Emgu.CV.Structure;
 
 namespace PanelSmithDAL.Models
 {
-    class Strip
+    public class Strip
     {
         public int StripID { get; set; }
         public virtual ICollection<Image<Bgr, Byte>> images { get; set; }

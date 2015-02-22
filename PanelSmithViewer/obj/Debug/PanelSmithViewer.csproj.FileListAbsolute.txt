@@ -83,4 +83,3 @@ C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmithView
 C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmithViewer\bin\zh-Hant\System.Spatial.resources.dll
 C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmithViewer\obj\Debug\PanelSmithViewer.dll
 C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmithViewer\obj\Debug\PanelSmithViewer.pdb
-C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmithViewer\obj\Debug\PanelSmithViewer.csprojResolveAssemblyReference.cache
