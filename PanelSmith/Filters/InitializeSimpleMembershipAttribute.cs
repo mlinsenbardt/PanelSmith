@@ -25,11 +25,11 @@ namespace PanelSmith.Filters
         {
             public SimpleMembershipInitializer()
             {
-                Database.SetInitializer<UsersContext>(null);
+                Database.SetInitializer<ProfileContext>(null);
 
                 try
                 {
-                    using (var context = new UsersContext())
+                    using (var context = new ProfileContext())
                     {
                         if (!context.Database.Exists())
                         {

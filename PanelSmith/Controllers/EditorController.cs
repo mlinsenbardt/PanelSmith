@@ -20,7 +20,12 @@ namespace PanelSmith.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            return View();
+            Project project = db.Projects.Find(id);
+            if (project == null)
+            {
+                return HttpNotFound();
+            }
+            return View(project);
         }
 
         //

@@ -23,7 +23,12 @@ namespace PanelSmithViewer.Controllers
 
         public ActionResult Details(int id)
         {
-            return View();
+            Project project = db.Projects.Find(id);
+            if (project == null)
+            {
+                return HttpNotFound();
+            }
+            return View(project);
         }
 
         //
