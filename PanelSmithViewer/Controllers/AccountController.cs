@@ -9,7 +9,7 @@ using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using PanelSmithViewer.Filters;
-using PanelSmithViewer.Models;
+using PanelSmithDAL.Models;
 
 namespace PanelSmithViewer.Controllers
 {

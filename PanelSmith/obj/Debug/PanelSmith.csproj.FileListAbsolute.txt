@@ -1,4 +1,3 @@
-C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmith\obj\Debug\PanelSmith.csprojResolveAssemblyReference.cache
 C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmith\bin\PanelSmith.dll.config
 C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmith\bin\PanelSmith.dll
 C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmith\bin\PanelSmith.pdb
@@ -33,7 +32,6 @@ C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmith\bin
 C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmith\bin\WebGrease.dll
 C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmith\bin\WebMatrix.Data.dll
 C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmith\bin\WebMatrix.WebData.dll
-C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmith\bin\PanelSmithDAL.pdb
 C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmith\bin\EntityFramework.xml
 C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmith\bin\EntityFramework.SqlServer.xml
 C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmith\bin\Newtonsoft.Json.xml
@@ -93,3 +91,5 @@ C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmith\bin
 C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmith\bin\Emgu.CV.ML.dll
 C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmith\bin\Emgu.CV.UI.dll
 C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmith\bin\Emgu.Util.dll
+C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmith\obj\Debug\PanelSmith.csprojResolveAssemblyReference.cache
+C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmith\bin\PanelSmithDAL.pdb

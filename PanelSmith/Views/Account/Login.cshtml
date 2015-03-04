@@ -1,4 +1,6 @@
-﻿
+﻿@using PanelSmithDAL.Models
+@model PanelSmithDAL.Models.LoginModel
+
 @{
     ViewBag.Title = "Log in";
 }
@@ -16,7 +18,7 @@
     <fieldset>
         <legend>Log in Form</legend>
         <ol>
-            @*<li>
+            <li>
                 @Html.LabelFor(m => m.UserName)
                 @Html.TextBoxFor(m => m.UserName)
                 @Html.ValidationMessageFor(m => m.UserName)
@@ -29,7 +31,7 @@
             <li>
                 @Html.CheckBoxFor(m => m.RememberMe)
                 @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
-            </li>*@
+            </li>
         </ol>
         <input type="submit" value="Log in" />
     </fieldset>

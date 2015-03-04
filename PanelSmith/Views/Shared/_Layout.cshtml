@@ -12,10 +12,10 @@
     @Styles.Render("~/Content/foundation/css")
 
     @RenderSection("head", required: false)
-    @{Html.RenderPartial("_LoginPartial");}
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
+    @{Html.RenderPartial("~/Views/Shared/_Navbar.cshtml");}
     @RenderBody()
 
     @Scripts.Render("~/bundles/jquery")

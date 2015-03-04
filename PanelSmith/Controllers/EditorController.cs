@@ -12,7 +12,7 @@ namespace PanelSmith.Controllers
     {
         //
         // GET: /Editor/
-        private PanelSmithContext db = new PanelSmithContext();
+        private UsersContext db = new UsersContext();
         public ActionResult Index()
         {
             return View(db.Projects.ToList());
