@@ -15,6 +15,7 @@ namespace PanelSmithDAL.Models
         {
             var users = new List<UserProfile>
             {
+            new UserProfile{UserName="mlinsenbardt"},
             new UserProfile{UserName="Carson"},
             new UserProfile{UserName="Meredith"},
             new UserProfile{UserName="Arturo"},

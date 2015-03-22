@@ -1711,10 +1711,10 @@ meta.foundation-mq-topbar {
 
 .top-bar {
   overflow: hidden;
-  height: 2.8125rem;
-  line-height: 2.8125rem;
+  height: 58px;
+  line-height: 58px;
   position: relative;
-  background: #333333;
+  background: none;
   margin-bottom: 0; }
   .top-bar ul {
     margin-bottom: 0;
@@ -1823,7 +1823,7 @@ meta.foundation-mq-topbar {
     .top-bar-section ul li > a {
       display: block;
       width: 100%;
-      color: #FFFFFF;
+      color: none;
       padding: 12px 0 12px 0;
       padding-left: 0.9375rem;
       font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
@@ -3571,7 +3571,8 @@ blockquote,
 th,
 td {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+}
 
 /* Default Link Styles */
 a {
@@ -3608,7 +3609,9 @@ h1, h2, h3, h4, h5, h6 {
   text-rendering: optimizeLegibility;
   margin-top: 0.2rem;
   margin-bottom: 0.5rem;
-  line-height: 1.4; }
+  line-height: 1.4; 
+    text-align: center;
+}
   h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
     font-size: 60%;
     color: #6f6f6f;

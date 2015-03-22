@@ -3,13 +3,26 @@
 }
 <div class="row">
     <div class="small-12 columns">
-        <ul class="button-group">
-            <li>@Html.ActionLink("Home", "Index", null, new { @class = "button" })</li>
-            @if (Request.IsAuthenticated)
-            {
-                <li>@Html.ActionLink("Projects", "Index", "Editor", new { @class = "button" })</li>
-            }
-            <li>@{Html.RenderPartial("~/Views/Shared/_LoginPartial.cshtml");}</li>
-        </ul>
+        <nav class="top-bar" data-topbar role="navigation">
+            <ul class="title-area">
+                <li class="name">
+                    <h1><a href="#"><img src="~/Images/PanelSmithLogoIcon.PNG" />@*PanelSmith*@</a></h1>
+                </li>
+                <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+            </ul>
+            <section class="top-bar-section">
+                <ul>
+                    <li>@Html.ActionLink("Home", "Index")</li>
+                    <li>@Html.ActionLink("About", "About")</li>
+                    <li>@Html.ActionLink("FAQ", "FAQ")</li>
+                    <li>@Html.ActionLink("Contact", "Contact")</li>
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Projects", "Index", "Editor")</li>
+                    }
+                    <li class="right">@Html.Partial("~/Views/Shared/_LoginPartial.cshtml")</li>
+                </ul>
+            </section>
+        </nav>
     </div>
 </div>

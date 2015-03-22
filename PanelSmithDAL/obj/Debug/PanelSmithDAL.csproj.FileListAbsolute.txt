@@ -12,3 +12,4 @@ C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmithDAL\
 C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmithDAL\bin\Debug\Emgu.CV.ML.dll
 C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmithDAL\bin\Debug\Emgu.CV.UI.dll
 C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmithDAL\bin\Debug\Emgu.Util.dll
+C:\Users\michael\Documents\Visual Studio 2013\Projects\PanelSmith\PanelSmithDAL\obj\Debug\PanelSmithDAL.csprojResolveAssemblyReference.cache

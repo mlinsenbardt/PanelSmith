@@ -219,6 +219,23 @@
     <Content Include="Global.asax" />
     <Content Include="App_Readme\Foundation for sites\readme.md" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Images\Comic16.jpg" />
+    <Content Include="Images\Comic1.jpg" />
+    <Content Include="Images\Comic10.jpg" />
+    <Content Include="Images\Comic11.jpg" />
+    <Content Include="Images\Comic12.jpg" />
+    <Content Include="Images\Comic13.jpg" />
+    <Content Include="Images\Comic14.jpg" />
+    <Content Include="Images\Comic15.jpg" />
+    <Content Include="Images\Comic2.jpg" />
+    <Content Include="Images\Comic3.jpg" />
+    <Content Include="Images\Comic4.jpg" />
+    <Content Include="Images\Comic5.jpg" />
+    <Content Include="Images\Comic6.jpg" />
+    <Content Include="Images\Comic7.jpg" />
+    <Content Include="Images\Comic8.jpg" />
+    <Content Include="Images\Comic9.jpg" />
+    <Content Include="Images\PanelSmithLogo.PNG" />
     <Content Include="Scripts\foundation\fastclick.js" />
     <Content Include="Scripts\foundation\foundation.abide.js" />
     <Content Include="Scripts\foundation\foundation.accordion.js" />
@@ -250,6 +267,12 @@
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\slick\ajax-loader.gif" />
+    <Content Include="Scripts\slick\fonts\slick.svg" />
+    <Content Include="Scripts\slick\slick-theme.css" />
+    <Content Include="Scripts\slick\slick.css" />
+    <Content Include="Scripts\slick\slick.js" />
+    <Content Include="Scripts\slick\slick.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -293,6 +316,13 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Editor\Index.cshtml" />
     <Content Include="Views\Shared\_Navbar.cshtml" />
+    <Content Include="Scripts\slick\config.rb" />
+    <Content Include="Scripts\slick\fonts\slick.eot" />
+    <Content Include="Scripts\slick\fonts\slick.ttf" />
+    <Content Include="Scripts\slick\fonts\slick.woff" />
+    <Content Include="Scripts\slick\slick-theme.scss" />
+    <Content Include="Scripts\slick\slick.scss" />
+    <Content Include="Views\Home\FAQ.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

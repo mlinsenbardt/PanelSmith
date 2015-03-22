@@ -26,6 +26,8 @@ namespace PanelSmith
             bundles.Add(Foundation.Scripts());
 
             #endregion
+
+            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
         }
     }
 }
