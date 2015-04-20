@@ -6,19 +6,19 @@
         <nav class="top-bar" data-topbar role="navigation">
             <ul class="title-area">
                 <li class="name">
-                    <h1><a href="#"><img src="~/Images/PanelSmithLogoIcon.PNG" />@*PanelSmith*@</a></h1>
+                    <h1><a href="#">PanelSmith</a></h1>
                 </li>
                 <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
             </ul>
             <section class="top-bar-section">
                 <ul>
-                    <li>@Html.ActionLink("Home", "Index")</li>
-                    <li>@Html.ActionLink("About", "About")</li>
-                    <li>@Html.ActionLink("FAQ", "FAQ")</li>
-                    <li>@Html.ActionLink("Contact", "Contact")</li>
+                    <li>@Html.ActionLink("Home", "Index","Home")</li>
+                    <li>@Html.ActionLink("About", "About","Home")</li>
+                    <li>@Html.ActionLink("FAQ", "FAQ","Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact","Home")</li>
                     @if (Request.IsAuthenticated)
                     {
-                        <li>@Html.ActionLink("Projects", "Index", "Editor")</li>
+                        <li>@Html.ActionLink("Projects", "Index", "Project")</li>
                     }
                     <li class="right">@Html.Partial("~/Views/Shared/_LoginPartial.cshtml")</li>
                 </ul>

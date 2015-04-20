@@ -33,13 +33,24 @@ namespace PanelSmith.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
+        [InitializeSimpleMembership]
         public ActionResult Login(LoginModel model, string returnUrl)
         {
-            if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
+            try
             {
-                return RedirectToLocal(returnUrl);
+                if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
+                {
+                    return RedirectToAction(returnUrl);
+                }
             }
-
+            catch(Exception e)
+            {
+                return View(e);
+            }
+            if (WebSecurity.IsAuthenticated == true)
+            {
+                System.Console.WriteLine("sadf");
+            }
             // If we got this far, something failed, redisplay form
             ModelState.AddModelError("", "The user name or password provided is incorrect.");
             return View(model);
@@ -81,7 +92,7 @@ namespace PanelSmith.Controllers
                 {
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
                     WebSecurity.Login(model.UserName, model.Password);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Home", "Home");
                 }
                 catch (MembershipCreateUserException e)
                 {

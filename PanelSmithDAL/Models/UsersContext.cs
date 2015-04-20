@@ -13,6 +13,7 @@ namespace PanelSmithDAL.Models
         }
 
         public DbSet<UserProfile> UserProfiles { get; set; }
+        public DbSet<LoginModel> LoginModels { get; set; }
         public DbSet<RegisterModel> Registrations { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<Page> Pages { get; set; }

@@ -9,7 +9,7 @@ using Emgu.CV.Structure;
 
 namespace PanelSmithDAL.Models
 {
-    public class UserInitializer : System.Data.Entity.DropCreateDatabaseAlways<UsersContext>
+    public class UserInitializer : System.Data.Entity.CreateDatabaseIfNotExists<UsersContext>
     {
         protected override void Seed(UsersContext context)
         {
@@ -25,9 +25,24 @@ namespace PanelSmithDAL.Models
             new UserProfile{UserName="Laura"},
             new UserProfile{UserName="Nino"}
             };
-
             users.ForEach(s => context.UserProfiles.Add(s));
             context.SaveChanges();
+
+            var logins = new List<LoginModel>
+            {
+            new LoginModel{UserName="mlinsenbardt",Password="Ih2b1nD&1nD"},
+            new LoginModel{UserName="Carson",Password="123456"},
+            new LoginModel{UserName="Meredith",Password="234567"},
+            new LoginModel{UserName="Arturo",Password="345678"},
+            new LoginModel{UserName="Gytis",Password="456789"},
+            new LoginModel{UserName="Yan",Password="567890"},
+            new LoginModel{UserName="Peggy",Password="213445"},
+            new LoginModel{UserName="Laura",Password="8745983"},
+            new LoginModel{UserName="Nino",Password="892374"}
+            };
+            logins.ForEach(s => context.LoginModels.Add(s));
+            context.SaveChanges();
+
             var projects = new List<Project>
             {
             new Project{UserID=1,ProjectName="Horses"},
@@ -40,6 +55,7 @@ namespace PanelSmithDAL.Models
             };
             projects.ForEach(s => context.Projects.Add(s));
             context.SaveChanges();
+
             var pages = new List<Page>
             {
             new Page{ProjectID=1},

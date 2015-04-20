@@ -1,0 +1,23 @@
+﻿@using PanelSmithDAL.Models
+@model IEnumerable<Project>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Projects</h2>
+
+<dd>
+    <table class="table">
+        <tr>
+            <th>Project Name</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProjectName)
+                </td>
+            </tr>
+        }
+    </table>
+</dd>

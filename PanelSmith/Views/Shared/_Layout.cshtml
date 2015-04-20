@@ -24,13 +24,17 @@
             <img src="..\Images\LeftBanner.png">
         </div>
         <div class="small-8 columns">
-        @RenderBody()
-            </div>
+            @RenderBody()
+        </div>
         <div class="small-2 columns">
             <img src="..\Images\RightBorder.png">
         </div>
     </div>
+    <footer>
+        <div class="large-12 columns">
 
+        </div>
+    </footer>
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/foundation")
         <script>
@@ -39,4 +43,5 @@
         @*Use the Scripts section to define page specific scripts*@
         @RenderSection("scripts", required: false)
 </body>
+
 </html>
