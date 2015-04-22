@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WebMatrix.WebData;
 using Emgu.CV;
 using Emgu.CV.UI;
 using Emgu.CV.Structure;
 
 namespace PanelSmithDAL.Models
 {
-    public class UserInitializer : System.Data.Entity.CreateDatabaseIfNotExists<UsersContext>
+    public class UserInitializer : System.Data.Entity.DropCreateDatabaseAlways<UsersContext>
     {
         protected override void Seed(UsersContext context)
         {
@@ -26,6 +27,7 @@ namespace PanelSmithDAL.Models
             new UserProfile{UserName="Nino"}
             };
             users.ForEach(s => context.UserProfiles.Add(s));
+
             context.SaveChanges();
 
             var logins = new List<LoginModel>
@@ -41,6 +43,14 @@ namespace PanelSmithDAL.Models
             new LoginModel{UserName="Nino",Password="892374"}
             };
             logins.ForEach(s => context.LoginModels.Add(s));
+
+            foreach (LoginModel user in logins)
+            {
+                if (WebSecurity.UserExists(user.UserName))
+                {
+                    WebSecurity.CreateUserAndAccount(user.UserName,user.Password);
+                }
+            }
             context.SaveChanges();
 
             var projects = new List<Project>

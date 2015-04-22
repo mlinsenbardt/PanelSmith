@@ -5,11 +5,16 @@ using System.Transactions;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using System.IO;
 using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using PanelSmith.Filters;
 using PanelSmithDAL.Models;
+using PanelSmithDAL.Repositories;
+using Emgu.CV;
+using Emgu.CV.UI;
+using Emgu.CV.Structure;
 
 namespace PanelSmith.Controllers
 {
@@ -17,6 +22,13 @@ namespace PanelSmith.Controllers
     [InitializeSimpleMembership]
     public class AccountController : Controller
     {
+
+        private IUserProfileRepository profileRepository;
+
+        public AccountController()
+        {
+            this.profileRepository = new UserProfileRepository(new UsersContext());
+        }
         //
         // GET: /Account/Login
 
@@ -211,6 +223,69 @@ namespace PanelSmith.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        public ActionResult UploadAvatar(HttpPostedFileBase[] file)
+        {
+            if (file.Count() < 1)
+            {
+                return RedirectToAction("Manage");
+            }
+                foreach (var image in file)
+                {
+                    if (image.ContentLength > 0)
+                    {
+                        byte[] imageData = null;
+                        using (var binaryReader = new BinaryReader(image.InputStream))
+                        {
+                            imageData = binaryReader.ReadBytes(image.ContentLength);
+                        }
+                        UserProfile cur = profileRepository.GetProfileByID(WebSecurity.GetUserId(User.Identity.Name));
+                        cur.UserAvatar = new UserProfile.Avatar();
+                        cur.UserAvatar.Image = imageData;
+                        profileRepository.UpdateProfileAvatar(cur);
+                    }
+                }
+                return RedirectToAction("Manage");
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult ViewImage(int id)
+        {
+            var item = profileRepository.GetProfileByID(id);
+            byte[] buffer = item.UserAvatar.Image;
+            return File(buffer, "image/jpg", string.Format("{0}.jpg", id));
+        }
+
+        //private readonly DBContext db = new DBContext();
+        //public int UploadImageInDataBase(HttpPostedFileBase file, UserProfile.Avatar contentViewModel)
+        //{
+        //    contentViewModel.Image = ConvertToBytes(file);
+        //    var Content = new Content
+        //    {
+        //        Title = contentViewModel.Title,
+        //        Description = contentViewModel.Description,
+        //        Contents = contentViewModel.Contents,
+        //        Image = contentViewModel.Image
+        //    };
+        //    db.Contents.Add(Content);
+        //    int i = db.SaveChanges();
+        //    if (i == 1)
+        //    {
+        //        return 1;
+        //    }
+        //    else
+        //    {
+        //        return 0;
+        //    }
+        //}
+        //public byte[] ConvertToBytes(HttpPostedFileBase image)
+        //{
+        //    byte[] imageBytes = null;
+        //    BinaryReader reader = new BinaryReader(image.InputStream);
+        //    imageBytes = reader.ReadBytes((int)image.ContentLength);
+        //    return imageBytes;
+        //}
         //
         // POST: /Account/ExternalLogin
 

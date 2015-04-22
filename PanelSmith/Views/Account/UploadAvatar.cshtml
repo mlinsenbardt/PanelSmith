@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "UploadAvatar";
+}
+
+<h2>UploadAvatar</h2>
+
+<form method="post" enctype="multipart/form-data" action="Photo/Upload">
+    <div class="row">
+        <span class="span4">
+            <input type="file" name="uploadImages" multiple="multiple" class="input-files" />
+        </span>
+        <span class="span2">
+            <input type="submit" name="button" value="Upload" class="btn btn-upload" />
+        </span>
+    </div>
+</form>

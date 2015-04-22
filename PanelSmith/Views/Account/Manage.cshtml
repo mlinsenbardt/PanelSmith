@@ -7,6 +7,7 @@
     <h1>@ViewBag.Title.</h1>
 </hgroup>
 
+@Html.AntiForgeryToken()
 <p class="message-success">@ViewBag.StatusMessage</p>
 
 <p>You're logged in as <strong>@User.Identity.Name</strong>.</p>
@@ -18,6 +19,14 @@
 else
 { 
     @Html.Partial("_SetPasswordPartial")
+}
+
+@using (Html.BeginForm("UploadAvatar", "Account", FormMethod.Post,
+                            new { enctype = "multipart/form-data" }))
+{
+    <label for="file">Upload Image:</label>
+    <input type="file" name="file" id="file" style="width: 100%;" />
+    <input type="submit" value="Upload" class="submit" />
 }
 
 <section id="externalLogins">
