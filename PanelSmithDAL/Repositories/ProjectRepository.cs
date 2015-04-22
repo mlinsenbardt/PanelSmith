@@ -21,9 +21,9 @@ namespace PanelSmithDAL.Repositories
             return context.Projects.ToList();
         }
 
-        public Project GetProjectByID(int id)
+        public IEnumerable<Project> GetProjectByID(int id)
         {
-            return context.Projects.Find(id);
+            return context.Projects.Where(a => a.ProjectID == id).ToList();
         }
 
         private bool disposed = false;

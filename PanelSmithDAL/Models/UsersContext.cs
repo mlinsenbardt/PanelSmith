@@ -10,6 +10,7 @@ namespace PanelSmithDAL.Models
         public UsersContext()
             : base("UsersContext")
         {
+            Database.SetInitializer<UsersContext>(new UserInitializer());
         }
 
         public DbSet<UserProfile> UserProfiles { get; set; }

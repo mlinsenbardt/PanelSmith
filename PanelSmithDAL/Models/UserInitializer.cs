@@ -10,10 +10,11 @@ using Emgu.CV.Structure;
 
 namespace PanelSmithDAL.Models
 {
-    public class UserInitializer : System.Data.Entity.DropCreateDatabaseAlways<UsersContext>
+    public class UserInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<UsersContext>
     {
         protected override void Seed(UsersContext context)
         {
+            WebSecurity.InitializeDatabaseConnection("UsersContext", "UserProfile", "UserId", "UserName", autoCreateTables: true);
             var users = new List<UserProfile>
             {
             new UserProfile{UserName="mlinsenbardt"},
@@ -46,7 +47,7 @@ namespace PanelSmithDAL.Models
 
             foreach (LoginModel user in logins)
             {
-                if (WebSecurity.UserExists(user.UserName))
+                if (!WebSecurity.UserExists(user.UserName))
                 {
                     WebSecurity.CreateUserAndAccount(user.UserName,user.Password);
                 }

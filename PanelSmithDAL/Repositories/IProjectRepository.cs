@@ -10,7 +10,7 @@ namespace PanelSmithDAL.Repositories
     public interface IProjectRepository : IDisposable
     {
         IEnumerable<Project> GetProjects();
-        Project GetProjectByID(int projectId);
+        IEnumerable<Project> GetProjectByID(int projectId);
 
     }
 }

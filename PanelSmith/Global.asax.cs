@@ -18,14 +18,14 @@ namespace PanelSmith
     {
         protected void Application_Start()
         {
+            Database.SetInitializer<UsersContext>(new UserInitializer());
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            AuthConfig.RegisterAuth();
-            Database.SetInitializer(new UserInitializer());
+            AuthConfig.RegisterAuth();            
         }
     }
 }

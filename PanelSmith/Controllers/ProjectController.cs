@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebMatrix.WebData;
+using PanelSmith.Filters;
 using PanelSmithDAL.Models;
 using PanelSmithDAL.Repositories;
 
@@ -18,17 +20,19 @@ namespace PanelSmith.Controllers
         {
             this.projectRepository = new ProjectRepository(new UsersContext());
         }
+
+        [InitializeSimpleMembership]
         public ActionResult Index()
         {
             IEnumerable<Project> projects;
-            projects = projectRepository.GetProjects();
+            projects = projectRepository.GetProjectByID(WebSecurity.GetUserId(User.Identity.Name));
             return View(projects);
         }
 
         public ActionResult Details(int id = 0)
         {
-            Project project = projectRepository.GetProjectByID(id);
-            if (project == null)
+            IEnumerable<Project> project = projectRepository.GetProjectByID(id);
+            if (project.Count() == 0)
             {
                 return HttpNotFound();
             }
