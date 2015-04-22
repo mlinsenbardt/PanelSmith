@@ -37,6 +37,7 @@ C:\Users\michael\documents\visual studio 2013\Projects\PanelSmith\PanelSmith\bin
 C:\Users\michael\documents\visual studio 2013\Projects\PanelSmith\PanelSmith\bin\WebGrease.dll
 C:\Users\michael\documents\visual studio 2013\Projects\PanelSmith\PanelSmith\bin\WebMatrix.Data.dll
 C:\Users\michael\documents\visual studio 2013\Projects\PanelSmith\PanelSmith\bin\WebMatrix.WebData.dll
+C:\Users\michael\documents\visual studio 2013\Projects\PanelSmith\PanelSmith\bin\PanelSmithDAL.pdb
 C:\Users\michael\documents\visual studio 2013\Projects\PanelSmith\PanelSmith\bin\EntityFramework.xml
 C:\Users\michael\documents\visual studio 2013\Projects\PanelSmith\PanelSmith\bin\EntityFramework.SqlServer.xml
 C:\Users\michael\documents\visual studio 2013\Projects\PanelSmith\PanelSmith\bin\Newtonsoft.Json.xml
@@ -92,4 +93,3 @@ C:\Users\michael\documents\visual studio 2013\Projects\PanelSmith\PanelSmith\bin
 C:\Users\michael\documents\visual studio 2013\Projects\PanelSmith\PanelSmith\obj\Debug\PanelSmith.csprojResolveAssemblyReference.cache
 C:\Users\michael\documents\visual studio 2013\Projects\PanelSmith\PanelSmith\obj\Debug\PanelSmith.dll
 C:\Users\michael\documents\visual studio 2013\Projects\PanelSmith\PanelSmith\obj\Debug\PanelSmith.pdb
-C:\Users\michael\documents\visual studio 2013\Projects\PanelSmith\PanelSmith\bin\PanelSmithDAL.pdb
