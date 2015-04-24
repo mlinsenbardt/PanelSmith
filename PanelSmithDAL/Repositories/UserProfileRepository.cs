@@ -28,7 +28,8 @@ namespace PanelSmithDAL.Repositories
 
         public void UpdateProfileAvatar(UserProfile user)
         {
-            context.UserProfiles.Add(user);
+            context.Entry(user).State = System.Data.Entity.EntityState.Modified;
+            context.SaveChanges();
         }
 
         private bool disposed = false;

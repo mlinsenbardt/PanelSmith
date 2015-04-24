@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create Project</h2>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <canvas id="myCanvas" width="1100" height="1700" style="border:3px solid black"></canvas>
+    <script>
+      var canvas = document.getElementById('myCanvas');
+      var context = canvas.getContext('2d');
+
+      context.beginPath();
+      context.moveTo(0, 0);
+      context.stroke();
+    </script>
+
+</body>
+</html>

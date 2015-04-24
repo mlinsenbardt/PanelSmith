@@ -12,14 +12,23 @@
             </ul>
             <section class="top-bar-section">
                 <ul>
-                    <li>@Html.ActionLink("Home", "Index","Home")</li>
+                    <li><a href="@Url.Action("Index", "Home", new { id ="you"})">Home</a></li>
                     <li>@Html.ActionLink("About", "About","Home")</li>
-                    <li>@Html.ActionLink("FAQ", "FAQ","Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact","Home")</li>
                     @if (Request.IsAuthenticated)
                     {
                         <li>@Html.ActionLink("Projects", "Index", "Project")</li>
                     }
+                    <li class="has-form">
+                        <div class="row collapse">
+                            <div class="large-8 small-9 columns">
+                                <input type="text" placeholder="Search for Comics">
+                            </div>
+                            <div class="large-4 small-3 columns">
+                                <a href="#" class="small button expand">Search</a>
+                            </div>
+                        </div>
+                    </li>
                     <li class="right">@Html.Partial("~/Views/Shared/_LoginPartial.cshtml")</li>
                 </ul>
             </section>

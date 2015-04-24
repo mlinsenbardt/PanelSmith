@@ -250,43 +250,14 @@ namespace PanelSmith.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public ActionResult ViewImage(int id)
+        public ActionResult ViewImage()
         {
-            var item = profileRepository.GetProfileByID(id);
+            var item = profileRepository.GetProfileByID(WebSecurity.GetUserId(User.Identity.Name));
+            //item.UserAvatar.AvatarId;
             byte[] buffer = item.UserAvatar.Image;
-            return File(buffer, "image/jpg", string.Format("{0}.jpg", id));
+            return File(buffer, "image/jpg", string.Format("{0}.jpg"));
         }
 
-        //private readonly DBContext db = new DBContext();
-        //public int UploadImageInDataBase(HttpPostedFileBase file, UserProfile.Avatar contentViewModel)
-        //{
-        //    contentViewModel.Image = ConvertToBytes(file);
-        //    var Content = new Content
-        //    {
-        //        Title = contentViewModel.Title,
-        //        Description = contentViewModel.Description,
-        //        Contents = contentViewModel.Contents,
-        //        Image = contentViewModel.Image
-        //    };
-        //    db.Contents.Add(Content);
-        //    int i = db.SaveChanges();
-        //    if (i == 1)
-        //    {
-        //        return 1;
-        //    }
-        //    else
-        //    {
-        //        return 0;
-        //    }
-        //}
-        //public byte[] ConvertToBytes(HttpPostedFileBase image)
-        //{
-        //    byte[] imageBytes = null;
-        //    BinaryReader reader = new BinaryReader(image.InputStream);
-        //    imageBytes = reader.ReadBytes((int)image.ContentLength);
-        //    return imageBytes;
-        //}
-        //
         // POST: /Account/ExternalLogin
 
         [HttpPost]

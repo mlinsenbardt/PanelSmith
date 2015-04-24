@@ -16,6 +16,21 @@ namespace PanelSmith.Controllers
         // GET: /Editor/
         private IProjectRepository projectRepository;
 
+        //this seems stupid but idk...
+        private IEnumerable<SelectListItem> PanelCount()
+        {
+            List<SelectListItem> numPanelsList = new List<SelectListItem>();
+            for (int count = 0; count < 4; count++)
+            {
+                numPanelsList.Add(new SelectListItem()
+                {
+                    Value = count.ToString(),
+                    Text = count.ToString()
+                });
+            }
+            return numPanelsList;
+        }
+
         public ProjectController()
         {
             this.projectRepository = new ProjectRepository(new UsersContext());
@@ -24,6 +39,7 @@ namespace PanelSmith.Controllers
         [InitializeSimpleMembership]
         public ActionResult Index()
         {
+            ViewBag.PanelCount = PanelCount();
             IEnumerable<Project> projects;
             projects = projectRepository.GetProjectByID(WebSecurity.GetUserId(User.Identity.Name));
             return View(projects);
