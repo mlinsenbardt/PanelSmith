@@ -1,0 +1,22 @@
+﻿@using PanelSmithDAL.Models
+@model IEnumerable<Project>
+@{
+    ViewBag.Title = "ProjectStringSearch";
+}
+
+<h2>Project Matching "@ViewBag.Name"</h2>
+<dd>
+    <table class="table">
+        <tr>
+            <th>Project Name</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProjectName)
+                </td>
+            </tr>
+        }
+    </table>
+</dd>

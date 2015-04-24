@@ -19,16 +19,20 @@
                     {
                         <li>@Html.ActionLink("Projects", "Index", "Project")</li>
                     }
+                    
                     <li class="has-form">
-                        <div class="row collapse">
-                            <div class="large-8 small-9 columns">
-                                <input type="text" placeholder="Search for Comics">
+                        @using (Html.BeginForm("ProjectStringSearch", "Project", FormMethod.Post)){
+                            <div class="row collapse">
+                                <div class="small-8 columns">
+                                    <input type="text">
+                                </div>
+                                <div class="small-4 columns">
+                                    <a href="#" class="small button">Search</a>
+                                </div>
                             </div>
-                            <div class="large-4 small-3 columns">
-                                <a href="#" class="small button expand">Search</a>
-                            </div>
-                        </div>
+                        }
                     </li>
+                    <li class="divider show-for-small"></li>
                     <li class="right">@Html.Partial("~/Views/Shared/_LoginPartial.cshtml")</li>
                 </ul>
             </section>
