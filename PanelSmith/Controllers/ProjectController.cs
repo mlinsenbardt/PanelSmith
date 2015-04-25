@@ -57,6 +57,11 @@ namespace PanelSmith.Controllers
 
         //
         // GET: /Editor/Create
+        public ActionResult ProjectStringSearch(string projectName){
+            IEnumerable<Project> projects = projectRepository.GetProjectsByName(projectName);
+            ViewBag.Name = projectName;
+            return View(projects);
+        }
 
         public ActionResult Create()
         {

@@ -11,6 +11,6 @@ namespace PanelSmithDAL.Repositories
     {
         IEnumerable<Project> GetProjects();
         IEnumerable<Project> GetProjectsByUserID(int projectId);
-
+        IEnumerable<Project> GetProjectsByName(string projectName);
     }
 }
