@@ -57,6 +57,7 @@ namespace PanelSmith.Controllers
 
         //
         // GET: /Editor/Create
+        [InitializeSimpleMembership]
         public ActionResult ProjectStringSearch(string projectName){
             IEnumerable<Project> projects = projectRepository.GetProjectsByName(projectName);
             ViewBag.Name = projectName;
