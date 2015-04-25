@@ -41,13 +41,13 @@ namespace PanelSmith.Controllers
         {
             ViewBag.PanelCount = PanelCount();
             IEnumerable<Project> projects;
-            projects = projectRepository.GetProjectByID(WebSecurity.GetUserId(User.Identity.Name));
+            projects = projectRepository.GetProjectsByUserID(WebSecurity.GetUserId(User.Identity.Name));
             return View(projects);
         }
 
         public ActionResult Details(int id = 0)
         {
-            IEnumerable<Project> project = projectRepository.GetProjectByID(id);
+            IEnumerable<Project> project = projectRepository.GetProjectsByUserID(id);
             if (project.Count() == 0)
             {
                 return HttpNotFound();

@@ -15,6 +15,7 @@ namespace PanelSmithDAL.Models
         public int ProjectID { get; set;}
         public int UserID { get; set; }
         public string ProjectName { get; set; }
+        public int PanelCount { get; set; }
 
         public virtual ICollection<Page> Pages { get; set; }
         public virtual ICollection<Strip> Strips { get; set; }

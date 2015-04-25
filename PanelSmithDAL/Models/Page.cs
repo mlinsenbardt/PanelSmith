@@ -17,6 +17,7 @@ namespace PanelSmithDAL.Models
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int PageID { get; set; }
         public int ProjectID { get; set; }
+        public int PanelCount { get; set; }
         public virtual ICollection<Image<Bgr, Byte>> images {get; set; }
     }
 }
