@@ -26,29 +26,44 @@
     <h2 id="createModalTitle">Create New Project</h2>
     <p>You are about to create a new project! Let's start by revealing it' secret identity!</p>
     <label>Project Title</label>
-    <input id="projectTitle" type="text" value="????????" style="width:300px;">
+    @using (Html.BeginForm("GetProjectName", "Project", FormMethod.Post))
+    {
+        <div class="row collapse">
+            <div class="small-8 columns">
+                <input type="text">
+            </div>
+            <div class="small-4 columns">
+                <a href="#" class="small button">Search</a>
+            </div>
+        </div>
+    }
     <a href="#" data-reveal-id="continueModal" class="small success button">Continue</a>
     <a class="close-reveal-modal" aria-label="Close">&#215;</a>
 </div>
 <div id="continueModal" class="reveal-modal" data-reveal aria-labelledby="continueModalTitle" aria-hidden="true" role="dialog">
     <h2 id="secondModalTitle">How many panels are you planning on using</h2>
     <label>Panels</label>
-    <fieldset>
-        <select id="PanelCount" name="PanelCount">
-            <option selected="selected" value=""></option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-        </select>
+    @using (Html.BeginForm("GetPanelCount", "Project", FormMethod.Post))
+    {
+        <div class="row collapse">
+            <fieldset>
+                <select id="PanelCount" name="PanelCount">
+                    <option selected="selected" value=""></option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                </select>
 
-        <p><input type="submit" value="Submit" /> </p>
+                <p><input type="submit" value="Submit" /> </p>
+            </fieldset>
+        </div>
+    }
 
-    </fieldset>
     <a class="close-reveal-modal" aria-label="Close">&#215;</a>
 </div>
 <a href="#" data-reveal-id="createModal" class="small success button">Create Project</a>

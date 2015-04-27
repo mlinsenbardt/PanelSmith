@@ -1,0 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using PanelSmithDAL.Models;
+
+namespace PanelSmithDAL.Repositories
+{
+    public interface IProjectRepository : IDisposable
+    {
+        IEnumerable<Project> GetProjects();
+<<<<<<< HEAD
+        IEnumerable<Project> GetProjectsByUserID(int projectId);
+
+=======
+        IEnumerable<Project> GetProjectByID(int projectId);
+        IEnumerable<Project> GetProjectsByName(string projectName);
+>>>>>>> origin/master
+    }
+}

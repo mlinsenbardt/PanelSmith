@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using WebMatrix.WebData;
 using Emgu.CV;
 using Emgu.CV.UI;
@@ -10,26 +12,42 @@ using Emgu.CV.Structure;
 
 namespace PanelSmithDAL.Models
 {
-    public class UserInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<UsersContext>
+    public class UserInitializer : System.Data.Entity.CreateDatabaseIfNotExists<UsersContext>
     {
         protected override void Seed(UsersContext context)
         {
-            WebSecurity.InitializeDatabaseConnection("UsersContext", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+
             var users = new List<UserProfile>
             {
-            new UserProfile{UserName="mlinsenbardt"},
-            new UserProfile{UserName="Carson"},
-            new UserProfile{UserName="Meredith"},
-            new UserProfile{UserName="Arturo"},
-            new UserProfile{UserName="Gytis"},
-            new UserProfile{UserName="Yan"},
-            new UserProfile{UserName="Peggy"},
-            new UserProfile{UserName="Laura"},
-            new UserProfile{UserName="Nino"}
+            new UserProfile{UserName="mlinsenbardt",UserPassword="Ih2b1nD&1nD"},
+            new UserProfile{UserName="Carson",UserPassword="123456"},
+            new UserProfile{UserName="Meredith",UserPassword="234567"},
+            new UserProfile{UserName="Arturo",UserPassword="345678"},
+            new UserProfile{UserName="Gytis",UserPassword="456789"},
+            new UserProfile{UserName="Yan",UserPassword="567890"},
+            new UserProfile{UserName="Peggy",UserPassword="213445"},
+            new UserProfile{UserName="Laura",UserPassword="8745983"},
+            new UserProfile{UserName="Nino",UserPassword="892374"}
             };
             users.ForEach(s => context.UserProfiles.Add(s));
 
             context.SaveChanges();
+
+            //Hopefully can figure this out someday...
+            //try
+            //{
+            //    foreach (UserProfile user in users)
+            //    {
+            //        if (WebSecurity.UserExists(user.UserName))
+            //        {
+            //            WebSecurity.CreateAccount(user.UserName, user.UserPassword, false);
+            //        }
+            //    }
+            //}
+            //catch (Exception e)
+            //{
+            //    throw e;
+            //}
 
             var logins = new List<LoginModel>
             {
@@ -45,13 +63,6 @@ namespace PanelSmithDAL.Models
             };
             logins.ForEach(s => context.LoginModels.Add(s));
 
-            foreach (LoginModel user in logins)
-            {
-                if (!WebSecurity.UserExists(user.UserName))
-                {
-                    WebSecurity.CreateUserAndAccount(user.UserName, user.Password);
-                }
-            }
             context.SaveChanges();
 
             var projects = new List<Project>

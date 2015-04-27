@@ -9,7 +9,6 @@ using System.IO;
 using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
-using PanelSmith.Filters;
 using PanelSmithDAL.Models;
 using PanelSmithDAL.Repositories;
 using Emgu.CV;
@@ -19,7 +18,6 @@ using Emgu.CV.Structure;
 namespace PanelSmith.Controllers
 {
     [Authorize]
-    [InitializeSimpleMembership]
     public class AccountController : Controller
     {
 
@@ -45,7 +43,6 @@ namespace PanelSmith.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        [InitializeSimpleMembership]
         public ActionResult Login(LoginModel model, string returnUrl)
         {
             try
@@ -100,16 +97,28 @@ namespace PanelSmith.Controllers
             if (ModelState.IsValid)
             {
                 // Attempt to register the user
-                try
+                //try
+                //{
+    
+                using (UsersContext context = new UsersContext())
                 {
-                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
-                    WebSecurity.Login(model.UserName, model.Password);
-                    return RedirectToAction("Index", "Home", "Home");
+                    UserProfile user = new UserProfile
+                    {
+                        UserName = model.UserName,
+                        UserPassword = model.Password
+                    };
+                    context.UserProfiles.Add(user);
+                    context.SaveChanges();
                 }
-                catch (MembershipCreateUserException e)
-                {
-                    ModelState.AddModelError("", ErrorCodeToString(e.StatusCode));
-                }
+
+                WebSecurity.CreateAccount(model.UserName, model.Password);
+                WebSecurity.Login(model.UserName, model.Password);
+                return RedirectToAction("Index", "Home", "Home");
+                //}
+                //catch (MembershipCreateUserException e)
+                //{
+                    //ModelState.AddModelError("", ErrorCodeToString(e.StatusCode));
+                //}
             }
 
             // If we got this far, something failed, redisplay form

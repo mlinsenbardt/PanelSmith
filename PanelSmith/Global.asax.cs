@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using System.Data.Entity;
+using WebMatrix.WebData;
 using PanelSmithDAL.Models;
 
 namespace PanelSmith
@@ -18,7 +19,9 @@ namespace PanelSmith
     {
         protected void Application_Start()
         {
+            WebSecurity.InitializeDatabaseConnection("UsersContext", "UserProfile", "UserId", "UserName", true);
             Database.SetInitializer<UsersContext>(new UserInitializer());
+
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);

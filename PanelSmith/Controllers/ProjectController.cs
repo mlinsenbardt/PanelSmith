@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebMatrix.WebData;
-using PanelSmith.Filters;
 using PanelSmithDAL.Models;
 using PanelSmithDAL.Repositories;
 
@@ -15,6 +14,19 @@ namespace PanelSmith.Controllers
         //
         // GET: /Editor/
         private IProjectRepository projectRepository;
+
+        public ProjectController()
+        {
+            this.projectRepository = new ProjectRepository(new UsersContext());
+        }
+
+        public ActionResult Index()
+        {
+            ViewBag.PanelCount = PanelCount();
+            IEnumerable<Project> projects;
+            projects = projectRepository.GetProjectsByUserID(WebSecurity.GetUserId(User.Identity.Name));
+            return View(projects);
+        }
 
         //this seems stupid but idk...
         private IEnumerable<SelectListItem> PanelCount()
@@ -31,20 +43,6 @@ namespace PanelSmith.Controllers
             return numPanelsList;
         }
 
-        public ProjectController()
-        {
-            this.projectRepository = new ProjectRepository(new UsersContext());
-        }
-
-        [InitializeSimpleMembership]
-        public ActionResult Index()
-        {
-            ViewBag.PanelCount = PanelCount();
-            IEnumerable<Project> projects;
-            projects = projectRepository.GetProjectsByUserID(WebSecurity.GetUserId(User.Identity.Name));
-            return View(projects);
-        }
-
         public ActionResult Details(int id = 0)
         {
             IEnumerable<Project> project = projectRepository.GetProjectsByUserID(id);
@@ -57,12 +55,22 @@ namespace PanelSmith.Controllers
 
         //
         // GET: /Editor/Create
-        [InitializeSimpleMembership]
         public ActionResult ProjectStringSearch(string projectName){
             IEnumerable<Project> projects = projectRepository.GetProjectsByName(projectName);
             ViewBag.Name = projectName;
             return View(projects);
         }
+
+        public void GetProjectName(string projectName)
+        {
+            ViewBag.ProjectName = projectName;
+        }
+
+        public void GetPanelCount(int panelCount)
+        {
+            ViewBag.PanelCount = panelCount;
+        }
+
 
         public ActionResult Create()
         {

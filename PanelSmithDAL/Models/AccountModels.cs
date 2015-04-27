@@ -8,13 +8,14 @@ using System.Web.Security;
 
 namespace PanelSmithDAL.Models
 {
-
+    [Table("UserProfile")]
     public class UserProfile
     {
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
         public string UserName { get; set; }
+        public string UserPassword { get; set; }
         public virtual ICollection<Project> Projects { get; set; }
         public virtual Avatar UserAvatar { get; set; }
 
