@@ -21,14 +21,30 @@ namespace PanelSmithDAL.Repositories
             return context.Projects.ToList();
         }
 
+        public Project GetProjectByProjectId(int projectId)
+        {
+            return context.Projects.Find(projectId);
+        }
+
         public IEnumerable<Project> GetProjectsByUserID(int id)
         {
-            return context.Projects.Where(a => a.ProjectID == id).ToList();
+            return context.Projects.Where(a => a.UserID == id).ToList();
         }
 
         public IEnumerable<Project> GetProjectsByName(string projectName)
         {
             return context.Projects.Where(a => a.ProjectName.Contains(projectName)).ToList();
+        }
+
+        public void InsertProject(Project project)
+        {
+            context.Projects.Add(project);
+        }
+
+        public void DeleteProject(int projectID)
+        {
+            Project project = context.Projects.Find(projectID);
+            context.Projects.Remove(project);
         }
 
         private bool disposed = false;

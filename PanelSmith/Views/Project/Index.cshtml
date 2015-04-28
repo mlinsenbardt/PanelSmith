@@ -22,48 +22,66 @@
     </table>
 </dd>
 
-<div id="createModal" class="reveal-modal" data-reveal aria-labelledby="createModalTitle" aria-hidden="true" role="dialog">
-    <h2 id="createModalTitle">Create New Project</h2>
-    <p>You are about to create a new project! Let's start by revealing it' secret identity!</p>
-    <label>Project Title</label>
-    @using (Html.BeginForm("GetProjectName", "Project", FormMethod.Post))
-    {
-        <div class="row collapse">
-            <div class="small-8 columns">
-                <input type="text">
-            </div>
-            <div class="small-4 columns">
-                <a href="#" class="small button">Search</a>
-            </div>
-        </div>
-    }
-    <a href="#" data-reveal-id="continueModal" class="small success button">Continue</a>
-    <a class="close-reveal-modal" aria-label="Close">&#215;</a>
-</div>
-<div id="continueModal" class="reveal-modal" data-reveal aria-labelledby="continueModalTitle" aria-hidden="true" role="dialog">
-    <h2 id="secondModalTitle">How many panels are you planning on using</h2>
-    <label>Panels</label>
-    @using (Html.BeginForm("GetPanelCount", "Project", FormMethod.Post))
-    {
-        <div class="row collapse">
-            <fieldset>
-                <select id="PanelCount" name="PanelCount">
-                    <option selected="selected" value=""></option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                </select>
+@using (Html.BeginForm("Create","Project",FormMethod.Post))
+{
+    <div class='hidden panel small-8 columns' id='name' data-next='count'>
+        <label>Project Name:</label>
+        <input type="text" placeholder="Enter Project Name" name='projectName' required>
+        <button id='nameButton' class="small button" type='button'> Next </button>
+    </div>
+    <div class='hidden panel small-8 columns' id='count' data-next='confirm'>
+        <label>Panel Count:</label>
+        <input class='small-4 columns' type="number" placeholder="Between 0 and 8" name='panelCount' required min=0 max=8>
+        <button id='countButton' class="small button" type='button'> Next </button>
+    </div>
+    <div class='hidden panel small-8 columns' id='confirm'>
+        <p id='content'>Create a project named, __name__, with __count__ panels?</p>
+        <button id='confirmButton' class="small success button" type='submit'> Yes! </button>
+    </div>
+    <button id="outer" class="small success button" type='button'> Create Project </button>
+    <div>
+    </div>
 
-                <p><input type="submit" value="Submit" /> </p>
-            </fieldset>
-        </div>
-    }
+}
 
-    <a class="close-reveal-modal" aria-label="Close">&#215;</a>
-</div>
-<a href="#" data-reveal-id="createModal" class="small success button">Create Project</a>
+@section Scripts {
+@Scripts.Render("~/Bundles/Foundation")
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#outer').click(function () {
+            var name = $('#name');
+            name.toggleClass('active');
+            if (name.hasClass('inactive'))
+                name.toggleClass('inactive');
+            $('#outer').prop("disabled", true);
+        })
+        $('#nameButton').click({ current: "name" }, next_modal)
+        $('#countButton').click({ current: "count" }, next_modal)
+    })
+
+    function next_modal(event) {
+        var cur = $('#' + event.data.current);
+        var next = $('#' + cur.data('next'))
+        var final = cur.data('next') == 'confirm';
+        cur.toggleClass('inactive');
+
+        if (cur.hasClass('active'))
+            cur.toggleClass('active');
+
+        next.toggleClass('active');
+        if (next.hasClass('inactive'))
+            next.toggleClass('inactive');
+        //this next line is hackish and a new function should be created for the confirm modal.
+        if (final) {
+            content = $('#content')
+            content.text(content.text()
+                            .replace('__name__', $('#name input').val())
+                            .replace('__count__', $('#count input').val())
+                        )
+        }
+
+    }
+</script>
+
+}

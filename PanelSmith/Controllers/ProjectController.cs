@@ -61,38 +61,17 @@ namespace PanelSmith.Controllers
             return View(projects);
         }
 
-        public void GetProjectName(string projectName)
-        {
-            ViewBag.ProjectName = projectName;
-        }
-
-        public void GetPanelCount(int panelCount)
-        {
-            ViewBag.PanelCount = panelCount;
-        }
-
-
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        //
-        // POST: /Editor/Create
-
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(string projectName, int panelCount)
         {
-            try
-            {
-                // TODO: Add insert logic here
+            //TODO add logic for creating project
+            Project newProject = new Project();
+            newProject.ProjectName = projectName;
+            newProject.PanelCount = panelCount;
+            newProject.UserID = WebSecurity.GetUserId(User.Identity.Name);
+            projectRepository.InsertProject(newProject);
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return View(newProject);
         }
 
         //

@@ -1,0 +1,39 @@
+﻿
+.hidden {
+  position: fixed;
+  top: -200px;
+  left: 100px;
+}
+ 
+.inactive {
+    -webkit-animation: raise 1s forwards;
+ 
+}
+ 
+.active {
+    -webkit-animation: drop 1s forwards;
+}
+ 
+.active input:invalid {
+  color: red;
+}
+ 
+@-webkit-keyframes drop {
+	from {
+		top: -200px;
+	}
+ 
+	to {
+    top: 100px;
+	}
+}
+ 
+@-webkit-keyframes raise {
+	from {
+		top: 100px;
+	}
+ 
+	to {
+    top: -200px;
+	}
+}
