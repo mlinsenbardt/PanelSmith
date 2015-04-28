@@ -9,7 +9,8 @@ namespace PanelSmith
             return new StyleBundle("~/Content/foundation/css").Include(
                        "~/Content/foundation/foundation.css",
                        "~/Content/foundation/foundation.mvc.css",
-                       "~/Content/foundation/app.css");
+                       "~/Content/foundation/app.css",
+                       "~/Content/foundation/modal.css");
         }
 
         public static Bundle Scripts()
@@ -19,7 +20,8 @@ namespace PanelSmith
                       "~/Scripts/jquery.cookie.js",
                       "~/Scripts/foundation/foundation.js",
                       "~/Scripts/foundation/foundation.*",
-                      "~/Scripts/foundation/app.js");
+                      "~/Scripts/foundation/app.js",
+                      "~/Scripts/jquery-1.8.2.min.js");
         }
     }
 }

@@ -9,12 +9,16 @@
     <table class="table">
         <tr>
             <th>Project Name</th>
+            <th>Author</th>
         </tr>
         @foreach (var item in Model)
         {
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.ProjectName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserID)
                 </td>
             </tr>
         }
