@@ -19,14 +19,15 @@ namespace PanelSmithDAL.Models
         public virtual ICollection<Project> Projects { get; set; }
         public virtual Avatar UserAvatar { get; set; }
 
+    }
 
-        public class Avatar
-        {
-            [Key]
-            [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-            public int AvatarId { get; set; }
-            public byte[] Image { get; set; }
-        }
+    public class Avatar
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int AvatarId { get; set; }
+        public int UserID { get; set; }
+        public byte[] Image { get; set; }
     }
 
     public class RegisterExternalLoginModel

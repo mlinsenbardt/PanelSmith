@@ -1,5 +1,6 @@
-﻿@using PanelSmithDAL.Models
-@model IEnumerable<Project>
+﻿@model IEnumerable<PanelSmith.ViewModels.ProjectViewModel>
+@using PanelSmithDAL.Models
+
 @{
     ViewBag.Title = "ProjectStringSearch";
 }
@@ -15,10 +16,10 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ProjectName)
+                   @Html.DisplayFor(modelItem => item.project.ProjectName)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.UserID)
+                   @Html.DisplayFor(modelItem => item.profile.UserName)
                 </td>
             </tr>
         }

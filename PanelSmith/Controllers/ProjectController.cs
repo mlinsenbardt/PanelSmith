@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebMatrix.WebData;
+using PanelSmith.ViewModels;
 using PanelSmithDAL.Models;
 using PanelSmithDAL.Repositories;
 
@@ -14,18 +15,28 @@ namespace PanelSmith.Controllers
         //
         // GET: /Editor/
         private IProjectRepository projectRepository;
+        private IUserProfileRepository profileRepository;
 
         public ProjectController()
         {
             this.projectRepository = new ProjectRepository(new UsersContext());
+            this.profileRepository = new UserProfileRepository(new UsersContext());
         }
 
         public ActionResult Index()
         {
             ViewBag.PanelCount = PanelCount();
+            IList<ProjectViewModel> projectViewModels = new List<ProjectViewModel>();
             IEnumerable<Project> projects;
             projects = projectRepository.GetProjectsByUserID(WebSecurity.GetUserId(User.Identity.Name));
-            return View(projects);
+            foreach (var project in projects)
+            {
+                ProjectViewModel projectViewModel = new ProjectViewModel();
+                projectViewModel.project = project;
+                projectViewModel.profile = profileRepository.GetProfileByID(WebSecurity.GetUserId(User.Identity.Name));
+                projectViewModels.Add(projectViewModel);
+            }
+            return View(projectViewModels);
         }
 
         //this seems stupid but idk...

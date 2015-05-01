@@ -11,6 +11,6 @@ namespace PanelSmithDAL.Repositories
     {
         IEnumerable<UserProfile> GetProfiles();
         UserProfile GetProfileByID(int profileId);
-        void UpdateProfileAvatar(UserProfile user);
+        void UpdateProfileAvatar(Avatar user);
     }
 }

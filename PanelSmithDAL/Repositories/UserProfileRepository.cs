@@ -26,9 +26,11 @@ namespace PanelSmithDAL.Repositories
             return context.UserProfiles.Find(id);
         }
 
-        public void UpdateProfileAvatar(UserProfile user)
+        public void UpdateProfileAvatar(Avatar user)
         {
-            context.Entry(user).State = System.Data.Entity.EntityState.Modified;
+            UserProfile oldProfile = GetProfileByID(user.UserID);
+            oldProfile.UserAvatar = user;
+            context.Entry(oldProfile).State = System.Data.Entity.EntityState.Modified;
             context.SaveChanges();
         }
 

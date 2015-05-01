@@ -33,7 +33,7 @@ namespace PanelSmithDAL.Repositories
 
         public IEnumerable<Project> GetProjectsByName(string projectName)
         {
-            return context.Projects.Where(a => a.ProjectName.ToLower().Contains(projectName.ToLower())).ToList();
+            return context.Projects.Where(a => a.ProjectName.ToLower().Contains(projectName.ToLower()));
         }
 
         public void InsertProject(Project project)

@@ -9,6 +9,7 @@ using System.IO;
 using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
+using PanelSmith.ViewModels;
 using PanelSmithDAL.Models;
 using PanelSmithDAL.Repositories;
 using Emgu.CV;
@@ -22,10 +23,12 @@ namespace PanelSmith.Controllers
     {
 
         private IUserProfileRepository profileRepository;
+        private IAvatarRepository avatarRepository;
 
         public AccountController()
         {
             this.profileRepository = new UserProfileRepository(new UsersContext());
+            this.avatarRepository = new AvatarRepository(new UsersContext());
         }
         //
         // GET: /Account/Login
@@ -228,6 +231,7 @@ namespace PanelSmith.Controllers
                 }
             }
 
+
             // If we got this far, something failed, redisplay form
             return View(model);
         }
@@ -248,10 +252,15 @@ namespace PanelSmith.Controllers
                         {
                             imageData = binaryReader.ReadBytes(image.ContentLength);
                         }
-                        UserProfile cur = profileRepository.GetProfileByID(WebSecurity.GetUserId(User.Identity.Name));
-                        cur.UserAvatar = new UserProfile.Avatar();
-                        cur.UserAvatar.Image = imageData;
-                        profileRepository.UpdateProfileAvatar(cur);
+                        UserProfileViewModel profileViewModel = new UserProfileViewModel();
+                        profileViewModel.profile = profileRepository.GetProfileByID(WebSecurity.GetUserId(User.Identity.Name));
+                        Avatar newAvatar = new Avatar();
+                        newAvatar.UserID = profileViewModel.profile.UserId;
+                        newAvatar.Image = imageData;
+
+                        profileRepository.UpdateProfileAvatar(newAvatar);
+                        avatarRepository.InsertAvatar(newAvatar);
+                        profileViewModel.avatar = newAvatar;
                     }
                 }
                 return RedirectToAction("Manage");
@@ -261,10 +270,10 @@ namespace PanelSmith.Controllers
         [AllowAnonymous]
         public ActionResult ViewImage()
         {
-            var item = profileRepository.GetProfileByID(WebSecurity.GetUserId(User.Identity.Name));
+            var item = avatarRepository.GetAvatarByUserID(WebSecurity.GetUserId(User.Identity.Name));
             //item.UserAvatar.AvatarId;
-            byte[] buffer = item.UserAvatar.Image;
-            return File(buffer, "image/jpg", string.Format("{0}.jpg"));
+            byte[] buffer = item.Image;
+            return File(buffer, "image/jpg");
         }
 
         // POST: /Account/ExternalLogin

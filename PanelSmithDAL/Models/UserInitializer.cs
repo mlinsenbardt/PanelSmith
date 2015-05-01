@@ -12,7 +12,7 @@ using Emgu.CV.Structure;
 
 namespace PanelSmithDAL.Models
 {
-    public class UserInitializer : System.Data.Entity.CreateDatabaseIfNotExists<UsersContext>
+    public class UserInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<UsersContext>
     {
         protected override void Seed(UsersContext context)
         {
