@@ -26,6 +26,6 @@ C:\Users\michael\documents\visual studio 2013\Projects\PanelSmith\PanelSmithDAL\
 C:\Users\michael\documents\visual studio 2013\Projects\PanelSmith\PanelSmithDAL\bin\Debug\System.Web.WebPages.Razor.xml
 C:\Users\michael\documents\visual studio 2013\Projects\PanelSmith\PanelSmithDAL\bin\Debug\WebMatrix.Data.xml
 C:\Users\michael\documents\visual studio 2013\Projects\PanelSmith\PanelSmithDAL\bin\Debug\WebMatrix.WebData.xml
+C:\Users\michael\documents\visual studio 2013\Projects\PanelSmith\PanelSmithDAL\obj\Debug\PanelSmithDAL.csprojResolveAssemblyReference.cache
 C:\Users\michael\documents\visual studio 2013\Projects\PanelSmith\PanelSmithDAL\obj\Debug\PanelSmithDAL.dll
 C:\Users\michael\documents\visual studio 2013\Projects\PanelSmith\PanelSmithDAL\obj\Debug\PanelSmithDAL.pdb
-C:\Users\michael\documents\visual studio 2013\Projects\PanelSmith\PanelSmithDAL\obj\Debug\PanelSmithDAL.csprojResolveAssemblyReference.cache
