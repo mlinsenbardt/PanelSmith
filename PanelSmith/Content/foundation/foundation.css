@@ -3358,17 +3358,21 @@ ul.pagination {
 .side-nav {
   display: block;
   margin: 0;
+  height: 100vh;
   padding: 0.875rem 0;
+  background:black;
   list-style-type: none;
   list-style-position: outside;
   font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif; }
   .side-nav li {
     margin: 0 0 0.4375rem 0;
     font-size: 0.875rem;
-    font-weight: normal; }
+    font-weight: normal; 
+
+  }
     .side-nav li a:not(.button) {
       display: block;
-      color: #008CBA;
+      color: white;
       margin: 0;
       padding: 0.4375rem 0.875rem; }
       .side-nav li a:not(.button):hover, .side-nav li a:not(.button):focus {

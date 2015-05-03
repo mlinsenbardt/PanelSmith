@@ -25,8 +25,20 @@
 <body>
     @{Html.RenderPartial("~/Views/Shared/_Navbar.cshtml");}
     <div class="row">
+        <br />
+    </div>
+    <div class="row">
         <div class="small-2 columns">
-            <p>Maybe a sidenav?</p>
+            <fieldset>
+                <legend>Options</legend>
+                <ul class="side-nav">
+                    <li><a href="#">Design</a></li>
+                    <li><a href="#">Preview</a></li>
+                    <li><a href="#">Erase</a></li>
+                    <li><a href="#" id="SaveCanvas">Save</a></li>
+                </ul>
+            </fieldset>
+
         </div>
         <div class="small-8 columns">
             <h2>Create Project @ViewBag.ProjectName</h2>
@@ -34,7 +46,14 @@
             <canvas id="myCanvas" width="610" height="790" style="border:3px solid black"></canvas>
         </div>
         <div class="small-2 columns">
-            <p>Image loader goes here</p>
+            <fieldset>
+                <legend>Uploads</legend>
+                <label for="file">Upload Image:</label>
+                <input type="file" name="file" id="file" style="width: 100%;" />
+                <button class="small success button">Add Image</button>
+                <ul class="images">
+                </ul>
+            </fieldset>
         </div>
     </div>
 
@@ -63,7 +82,14 @@
                 context.strokeRect(20, 596, 275, 172);
             if(count > 7)
                 context.strokeRect(315, 596, 275, 172);
+            $('#SaveCanvas').click(saveCanvas)
         });
+        function saveCanvas() {
+            var canvas = document.getElementById('myCanvas');
+            var dataURL = canvas.toDataURL();
+            alert(dataURL);
+            this.href = dataURL;
+        }
     </script>
 @*}*@
 
