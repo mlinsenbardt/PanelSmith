@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Optimization;
 using WebMatrix.WebData;
 using PanelSmith.ViewModels;
 using PanelSmithDAL.Models;
@@ -67,9 +68,16 @@ namespace PanelSmith.Controllers
         //
         // GET: /Editor/Create
         public ActionResult ProjectStringSearch(string projectName){
+            IList<ProjectViewModel> projectViewModels = new List<ProjectViewModel>();
             IEnumerable<Project> projects = projectRepository.GetProjectsByName(projectName);
             ViewBag.Name = projectName;
-            return View(projects);
+            foreach(var project in projects){
+                ProjectViewModel projectViewModel = new ProjectViewModel();
+                projectViewModel.project = project;
+                projectViewModel.profile = profileRepository.GetProfileByID(WebSecurity.GetUserId(User.Identity.Name));
+                projectViewModels.Add(projectViewModel);
+            }
+            return View(projectViewModels);
         }
 
         [HttpPost]
@@ -81,6 +89,8 @@ namespace PanelSmith.Controllers
             newProject.PanelCount = panelCount;
             newProject.UserID = WebSecurity.GetUserId(User.Identity.Name);
             projectRepository.InsertProject(newProject);
+            ViewBag.PanelCount = panelCount;
+            ViewBag.ProjectName = projectName;
 
             return View(newProject);
         }

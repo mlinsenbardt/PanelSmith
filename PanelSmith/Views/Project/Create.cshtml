@@ -1,8 +1,8 @@
-﻿@{
+﻿@using System.Web.Optimization
+@model PanelSmithDAL.Models.Project
+@{
     ViewBag.Title = "Create";
 }
-
-<h2>Create Project</h2>
 
 @{
     Layout = null;
@@ -10,16 +10,62 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<body>
-    <canvas id="myCanvas" width="1100" height="1700" style="border:3px solid black"></canvas>
-    <script>
-      var canvas = document.getElementById('myCanvas');
-      var context = canvas.getContext('2d');
+<head>
+    <meta charset="utf-8" />
 
-      context.beginPath();
-      context.moveTo(0, 0);
-      context.stroke();
+    @*Set the viewport width to device width for mobile *@
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewBag.Title - Welcome to PanelSmith</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+    @Styles.Render("~/Content/foundation/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    @{Html.RenderPartial("~/Views/Shared/_Navbar.cshtml");}
+    <div class="row">
+        <div class="small-2 columns">
+            <p>Maybe a sidenav?</p>
+        </div>
+        <div class="small-8 columns">
+            <h2>Create Project @ViewBag.ProjectName</h2>
+            <p class="hidden" hidden>@ViewBag.PanelCount</p>
+            <canvas id="myCanvas" width="610" height="790" style="border:3px solid black"></canvas>
+        </div>
+        <div class="small-2 columns">
+            <p>Image loader goes here</p>
+        </div>
+    </div>
+
+@*@section Scripts {
+@Scripts.Render("~/Bundles/Foundation")*@
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type ="text/javascript">
+        $(document).ready(function () {
+            var canvas = document.getElementById('myCanvas');
+            var context = canvas.getContext('2d');
+            var count = document.getElementsByClassName('hidden')[0].innerHTML
+            context.lineWidth = 2;
+            if(count > 0)
+                context.strokeRect(20, 20, 275, 172);
+            if(count > 1)
+                context.strokeRect(315, 20, 275, 172);
+            if(count > 2)
+                context.strokeRect(20, 212, 275, 172);
+            if(count > 3)
+                context.strokeRect(315, 212, 275, 172);
+            if(count > 4)
+                context.strokeRect(20, 404, 275, 172);
+            if(count > 5)
+                context.strokeRect(315, 404, 275, 172);
+            if(count > 6)
+                context.strokeRect(20, 596, 275, 172);
+            if(count > 7)
+                context.strokeRect(315, 596, 275, 172);
+        });
     </script>
+@*}*@
 
 </body>
 </html>
