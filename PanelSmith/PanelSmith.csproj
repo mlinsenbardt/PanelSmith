@@ -208,10 +208,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\ProjectViewModel.cs" />
+    <Compile Include="ViewModels\UserProfileViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\foundation\foundation.css" />
     <Content Include="Content\foundation\foundation.mvc.css" />
+    <Content Include="Content\foundation\modal.css" />
     <Content Include="Content\foundation\normalize.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -672,6 +675,8 @@
     <Content Include="Scripts\slick\slick.scss" />
     <Content Include="Views\Home\FAQ.cshtml" />
     <Content Include="Views\Account\UploadAvatar.cshtml" />
+    <Content Include="Views\Project\ProjectStringSearch.cshtml" />
+    <Content Include="Views\Project\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
