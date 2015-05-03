@@ -99,9 +99,6 @@ namespace PanelSmith.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Attempt to register the user
-                //try
-                //{
     
                 using (UsersContext context = new UsersContext())
                 {
@@ -117,11 +114,6 @@ namespace PanelSmith.Controllers
                 WebSecurity.CreateAccount(model.UserName, model.Password);
                 WebSecurity.Login(model.UserName, model.Password);
                 return RedirectToAction("Index", "Home", "Home");
-                //}
-                //catch (MembershipCreateUserException e)
-                //{
-                    //ModelState.AddModelError("", ErrorCodeToString(e.StatusCode));
-                //}
             }
 
             // If we got this far, something failed, redisplay form
@@ -270,9 +262,16 @@ namespace PanelSmith.Controllers
         [AllowAnonymous]
         public ActionResult ViewImage()
         {
-            var item = avatarRepository.GetAvatarByUserID(WebSecurity.GetUserId(User.Identity.Name));
-            //item.UserAvatar.AvatarId;
-            byte[] buffer = item.Image;
+            byte[] buffer;
+            try
+            {
+                var item = avatarRepository.GetAvatarByUserID(WebSecurity.GetUserId(User.Identity.Name));
+                //item.UserAvatar.AvatarId;
+                buffer = item.Image;
+            }
+            catch(Exception e){
+                return File("../Images/default_profile_large.jpg","image/jpg"); 
+            }
             return File(buffer, "image/jpg");
         }
 
