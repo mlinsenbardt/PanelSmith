@@ -51,7 +51,7 @@
                 <label for="file">Upload Image:</label>
                 <input type="file" name="file" id="file" style="width: 100%;" />
                 <button class="small success button">Add Image</button>
-                <ul class="images">
+                <ul id="images">
                 </ul>
             </fieldset>
         </div>
@@ -60,6 +60,7 @@
 @*@section Scripts {
 @Scripts.Render("~/Bundles/Foundation")*@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/jquery-ui.min.js"></script>
     <script type ="text/javascript">
         $(document).ready(function () {
             var canvas = document.getElementById('myCanvas');
@@ -90,6 +91,32 @@
             alert(dataURL);
             this.href = dataURL;
         }
+        $(function () {
+            $(":file").change(function () {
+                if (this.files && this.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = imageIsLoaded;
+                    reader.readAsDataURL(this.files[0]);
+                }
+            });
+        });
+        function imageIsLoaded(e) {
+            var li = $("<li>");
+            li.draggable({
+                helper: 'clone'
+            });
+            var image = $("<img>");
+            image.attr('src', e.target.result);
+            li.append(image);
+            $('#images').append(li);
+        };
+        $("#myCanvas").droppable({
+            accept: "li",
+            drop: function (event, ui) {
+                var context = $(this)[0].getContext("2d");
+                context.drawImage($(ui.draggable).clone().children('img')[0], ui.position.left + 610, ui.position.top - event.target.offsetTop);
+            }
+        });
     </script>
 @*}*@
 
