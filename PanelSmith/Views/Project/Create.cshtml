@@ -17,10 +17,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>@ViewBag.Title - Welcome to PanelSmith</title>
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link rel="icon" type="image/png" href="../Images/PanelSmithLogo.PNG" />
+    <link rel="stylesheet" type="text/css" href="~/Content/swipebox/swipebox.css" />
 
     @Styles.Render("~/Content/foundation/css")
     @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/swipebox/jquery.swipebox.js"></script>
 </head>
 <body>
     @{Html.RenderPartial("~/Views/Shared/_Navbar.cshtml");}
@@ -35,7 +37,7 @@
                     <li><a href="#">Design</a></li>
                     <li><a href="#">Preview</a></li>
                     <li><a href="javascript:location.reload(true)">Erase</a></li>
-                    <li><a href="#" id="SaveCanvas">Save</a></li>
+                    <li><a href="#" id="SaveCanvas" class=""type="">Save</a></li>
                 </ul>
             </fieldset>
 
@@ -86,9 +88,17 @@
         });
         function saveCanvas() {
             var canvas = document.getElementById('myCanvas');
-            var dataURL = canvas.toDataURL();
-            alert(dataURL);
-            this.href = dataURL;
+            var dataURL = canvas.toDataURL("image/png");
+            $.ajax({
+                type: 'POST',
+                url: '../Update',
+                data: dataURL,
+                success: function (data) {
+                    console.log("success");
+                    console.log(data);
+                }
+            });
+            //this.href = dataURL;
         }
         $(function () {
             $(":file").change(function () {
