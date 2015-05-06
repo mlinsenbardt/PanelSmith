@@ -74,7 +74,7 @@ namespace PanelSmith.Controllers
             foreach(var project in projects){
                 ProjectViewModel projectViewModel = new ProjectViewModel();
                 projectViewModel.project = project;
-                projectViewModel.profile = profileRepository.GetProfileByID(WebSecurity.GetUserId(User.Identity.Name));
+                projectViewModel.profile = profileRepository.GetProfileByID(project.UserID);
                 projectViewModels.Add(projectViewModel);
             }
             return View(projectViewModels);
