@@ -20,7 +20,8 @@ namespace PanelSmithDAL.Repositories
 
             public Avatar GetAvatarByUserID(int userId)
             {
-                return context.Avatars.Where(a => a.UserID == userId).First();
+                IEnumerable<Avatar> avatars = context.Avatars.Where(a => a.UserID == userId);
+                return avatars.ElementAt(avatars.Count()-1);
             }
 
             public void InsertAvatar(Avatar avatar)

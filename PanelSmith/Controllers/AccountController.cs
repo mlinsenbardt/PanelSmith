@@ -270,9 +270,17 @@ namespace PanelSmith.Controllers
         [AllowAnonymous]
         public ActionResult ViewImage()
         {
-            var item = avatarRepository.GetAvatarByUserID(WebSecurity.GetUserId(User.Identity.Name));
-            //item.UserAvatar.AvatarId;
-            byte[] buffer = item.Image;
+            byte[] buffer;
+            try
+            {
+                var item = avatarRepository.GetAvatarByUserID(WebSecurity.GetUserId(User.Identity.Name));
+                //item.UserAvatar.AvatarId;
+                buffer = item.Image;
+            }
+            catch
+            {
+                return File("../Images/default_profile_large.jpg","image/jpg");
+            }
             return File(buffer, "image/jpg");
         }
 
