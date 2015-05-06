@@ -41,6 +41,7 @@
     <div class='hidden panel small-8 columns' id='confirm'>
         <p id='content'>Create a project named, __name__, with __count__ panels?</p>
         <button id='confirmButton' class="small success button" type='submit'> Yes! </button>
+        <button id='cancelButton' class="small alert button" type="button">No Thanks</button>
     </div>
     <button id="outer" class="small success button" type='button'> Create Project </button>
     <div>
@@ -62,6 +63,7 @@
         })
         $('#nameButton').click({ current: "name" }, next_modal)
         $('#countButton').click({ current: "count" }, next_modal)
+        $('#cancelButton').click(reset_modals)
     })
 
     function next_modal(event) {
@@ -85,6 +87,15 @@
                         )
         }
 
+    }
+    function reset_modals() {
+        if($('#name').hasClass('active'))
+            $('#name').toggleClass('active')
+        if ($('#count').hasClass('active'))
+            $('#count').toggleClass('active')
+        if ($('#confirm').hasClass('active'))
+            $('#confirm').toggleClass('active')
+        $('#outer').prop("disabled", false);
     }
 </script>
 

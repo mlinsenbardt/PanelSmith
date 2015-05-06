@@ -17,10 +17,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>@ViewBag.Title - Welcome to PanelSmith</title>
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link rel="icon" type="image/png" href="../Images/PanelSmithLogo.PNG" />
+    <link rel="stylesheet" type="text/css" href="~/Content/swipebox/swipebox.css" />
 
     @Styles.Render("~/Content/foundation/css")
     @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/swipebox/jquery.swipebox.js"></script>
 </head>
 <body>
     @{Html.RenderPartial("~/Views/Shared/_Navbar.cshtml");}
@@ -34,8 +36,8 @@
                 <ul class="side-nav">
                     <li><a href="#">Design</a></li>
                     <li><a href="#">Preview</a></li>
-                    <li><a href="#">Erase</a></li>
-                    <li><a href="#" id="SaveCanvas">Save</a></li>
+                    <li><a href="javascript:location.reload(true)">Erase</a></li>
+                    <li><a href="#" id="SaveCanvas" class=""type="">Save</a></li>
                 </ul>
             </fieldset>
 
@@ -50,8 +52,7 @@
                 <legend>Uploads</legend>
                 <label for="file">Upload Image:</label>
                 <input type="file" name="file" id="file" style="width: 200%;" />
-                <button class="small success button">Add Image</button>
-                <ul class="images">
+                <ul id="images">
                 </ul>
             </fieldset>
         </div>
@@ -60,6 +61,7 @@
 @*@section Scripts {
 @Scripts.Render("~/Bundles/Foundation")*@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/jquery-ui.min.js"></script>
     <script type ="text/javascript">
         $(document).ready(function () {
             var canvas = document.getElementById('myCanvas');
@@ -86,10 +88,44 @@
         });
         function saveCanvas() {
             var canvas = document.getElementById('myCanvas');
-            var dataURL = canvas.toDataURL();
-            alert(dataURL);
-            this.href = dataURL;
+            var dataURL = canvas.toDataURL("image/png");
+            $.ajax({
+                type: 'POST',
+                url: '../Update',
+                data: dataURL,
+                success: function (data) {
+                    console.log("success");
+                    console.log(data);
+                }
+            });
+            //this.href = dataURL;
         }
+        $(function () {
+            $(":file").change(function () {
+                if (this.files && this.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = imageIsLoaded;
+                    reader.readAsDataURL(this.files[0]);
+                }
+            });
+        });
+        function imageIsLoaded(e) {
+            var li = $("<li>");
+            li.draggable({
+                helper: 'clone'
+            });
+            var image = $("<img>");
+            image.attr('src', e.target.result);
+            li.append(image);
+            $('#images').append(li);
+        };
+        $("#myCanvas").droppable({
+            accept: "li",
+            drop: function (event, ui) {
+                var context = $(this)[0].getContext("2d");
+                context.drawImage($(ui.draggable).clone().children('img')[0], ui.position.left + 610, ui.position.top - event.target.offsetTop);
+            }
+        });
     </script>
 @*}*@
 
