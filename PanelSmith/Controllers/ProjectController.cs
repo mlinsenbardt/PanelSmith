@@ -88,6 +88,7 @@ namespace PanelSmith.Controllers
             newProject.ProjectName = projectName;
             newProject.PanelCount = panelCount;
             newProject.UserID = WebSecurity.GetUserId(User.Identity.Name);
+            profileRepository.UpdateProfileProjects(newProject);
             projectRepository.InsertProject(newProject);
             ViewBag.PanelCount = panelCount;
             ViewBag.ProjectName = projectName;

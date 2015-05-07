@@ -34,6 +34,14 @@ namespace PanelSmithDAL.Repositories
             context.SaveChanges();
         }
 
+        public void UpdateProfileProjects(Project project)
+        {
+            UserProfile oldProfile = GetProfileByID(project.UserID);
+            oldProfile.Projects.Add(project);
+            context.Entry(oldProfile).State = System.Data.Entity.EntityState.Modified;
+            context.SaveChanges();
+        }
+
         private bool disposed = false;
 
         protected virtual void Dispose(bool disposing)
