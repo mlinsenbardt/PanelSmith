@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
+using System.IO;
 using WebMatrix.WebData;
 using PanelSmith.ViewModels;
 using PanelSmithDAL.Models;
@@ -38,6 +39,22 @@ namespace PanelSmith.Controllers
                 projectViewModels.Add(projectViewModel);
             }
             return View(projectViewModels);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult ViewImage(int id)
+        {
+            try
+            {
+                var item = projectRepository.GetProjectByProjectId(id);
+                //item.UserAvatar.AvatarId;
+                return File(item.ImagePath,"image/png");
+            }
+            catch
+            {
+                return File("../Images/default_profile_large.jpg", "image/jpg");
+            }
         }
 
         //this seems stupid but idk...
@@ -98,12 +115,25 @@ namespace PanelSmith.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdateProject(string id, string imageData)
+        public ActionResult UpdateProject(int id, string imageData)
         {
-            byte[] data = Convert.FromBase64String(imageData);
-
             Project oldProject = projectRepository.GetProjectByProjectId(Convert.ToInt32(id));
-            oldProject.image = data;
+            string fileName = oldProject.ProjectName + ".png";
+            string fileNameWitPath = Path.Combine(Server.MapPath("~/Images"), fileName);
+
+            using (FileStream fs = new FileStream(fileNameWitPath, FileMode.Create))
+            {
+                using (BinaryWriter bw = new BinaryWriter(fs))
+                {
+                    byte[] data = Convert.FromBase64String(imageData);
+                    bw.Write(data);
+                    bw.Close();
+                }
+                fs.Close();
+            }
+
+
+            oldProject.ImagePath = "../Images/" + oldProject.ProjectName + ".png";
             projectRepository.UpdateProject(oldProject);
             return RedirectToAction("Index");
         }
