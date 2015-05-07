@@ -21,6 +21,11 @@
                 <td>
                    @Html.DisplayFor(modelItem => item.profile.UserName)
                 </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.project.ImagePath)*@
+
+                    <img src="@Html.DisplayFor(modelItem => item.project.ImagePath)" alt="Image" style="width:100px; height:100px;">
+                </td>
             </tr>
         }
     </table>
