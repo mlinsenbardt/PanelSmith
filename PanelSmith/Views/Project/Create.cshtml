@@ -45,7 +45,12 @@
         <div class="small-8 columns">
             <h2>Create Project @ViewBag.ProjectName</h2>
             <p class="hidden" hidden>@ViewBag.PanelCount</p>
-            <canvas id="myCanvas" width="610" height="790" style="border:3px solid black"></canvas>
+            @using (Html.BeginForm("UpdateProject", "Project", FormMethod.Post, new { id = "drawingForm"}))
+            {
+                        <input type="hidden" name="imageData" id="imageData"/>
+                        <input type="hidden" name="id" value="@ViewBag.ProjectID"/>
+                        <canvas id="myCanvas" width="610" height="790" style="border:3px solid black"></canvas>
+            }
         </div>
         <div class="small-2 columns">
             <fieldset>
@@ -87,18 +92,13 @@
             $('#SaveCanvas').click(saveCanvas)
         });
         function saveCanvas() {
+            var form = $('#drawingForm');
             var canvas = document.getElementById('myCanvas');
-            var dataURL = canvas.toDataURL("image/png");
-            $.ajax({
-                type: 'POST',
-                url: '../Update',
-                data: dataURL,
-                success: function (data) {
-                    console.log("success");
-                    console.log(data);
-                }
-            });
-            //this.href = dataURL;
+            var file = canvas.toDataURL("image/png");
+            file = file.replace('data:image/png;base64,', '');
+            $('#imageData').val(file);
+            console.log(file);
+            form.submit();
         }
         $(function () {
             $(":file").change(function () {

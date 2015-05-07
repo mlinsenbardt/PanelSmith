@@ -41,6 +41,12 @@ namespace PanelSmithDAL.Repositories
             context.Projects.Add(project);
         }
 
+        public void UpdateProject(Project project)
+        {
+            context.Entry(project).State = System.Data.Entity.EntityState.Modified;
+            context.SaveChanges();
+        }
+
         public void DeleteProject(int projectID)
         {
             Project project = context.Projects.Find(projectID);

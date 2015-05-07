@@ -14,6 +14,7 @@ namespace PanelSmithDAL.Repositories
         IEnumerable<Project> GetProjectsByName(string projectName);
         Project GetProjectByProjectId(int projectId);
         void InsertProject(Project project);
+        void UpdateProject(Project project);
         void DeleteProject(int projectID);
     }
 }

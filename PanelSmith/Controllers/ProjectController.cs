@@ -92,10 +92,21 @@ namespace PanelSmith.Controllers
             projectRepository.InsertProject(newProject);
             ViewBag.PanelCount = panelCount;
             ViewBag.ProjectName = projectName;
+            ViewBag.ProjectID = newProject.ProjectID;
 
             return View(newProject);
         }
 
+        [HttpPost]
+        public ActionResult UpdateProject(string id, string imageData)
+        {
+            byte[] data = Convert.FromBase64String(imageData);
+
+            Project oldProject = projectRepository.GetProjectByProjectId(Convert.ToInt32(id));
+            oldProject.image = data;
+            projectRepository.UpdateProject(oldProject);
+            return RedirectToAction("Index");
+        }
         //
         // GET: /Editor/Edit/5
 
